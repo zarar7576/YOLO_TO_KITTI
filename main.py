@@ -2,6 +2,8 @@ import argparse
 import os
 from tqdm import tqdm
 
+image_height=256
+image_width =256
 
 parser = argparse.ArgumentParser()
 # parser.add_argument("finput", help="echo the string you use here")
@@ -40,9 +42,11 @@ for fnames in tqdm(txt_files):
         lines=lines.replace('\n', '').split(" ")
         # print(lines[2])
         lines[0]=int(lines[0])
-        for dd in range(4):
-            # print(lines[1+dd])
-            lines[1+dd]=float(lines[1+dd])*256
+
+        lines[1]=float(lines[1])*image_width
+        lines[2]=float(lines[2])*image_height
+        lines[3]=float(lines[3])*image_width
+        lines[4]=float(lines[4])*image_height
             # print(lines[1+dd])
 
 
