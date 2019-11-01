@@ -12,11 +12,17 @@ args = parser.parse_args()
 
 input_path=args.finput
 
+if not os.path.exists("KITTI_"+input_path):
+	os.mkdir("KITTI_"+input_path)
+
+
 if not os.path.exists(input_path):
     # print("File Path :",args.finput," does not exist!!!!!")
     raise Exception(' File path: '+str(args.finput)+" dosent exis")
 else:
     pass
+
+
 
 from os import listdir
 from os.path import isfile, join
@@ -51,6 +57,10 @@ for fnames in tqdm(txt_files):
 
 
         n_line= [0] * 15
+        if lines[0] == 1:
+            lines[0]='other'
+        else:
+            lines[0]='car'
         n_line[0]=lines[0]
         n_line[4]=int(lines[1]-lines[3]/2)
         n_line[5]=int(lines[2]-lines[4]/2)
@@ -58,8 +68,12 @@ for fnames in tqdm(txt_files):
         n_line[7]=int(lines[2]+lines[4]/2)
 
         for c,n in enumerate(n_line):
-            if n<0:
-                n_line[c]=1
+            if not c==0:
+                if n<0:
+                    n_line[c]=1
+                if n>256:
+                    n_line[c]=255
+
 
 
         str1 = ' '.join(str(n_line)).replace(' ', '').replace(',', ' ').replace('[', '').replace("]","")
@@ -70,6 +84,6 @@ for fnames in tqdm(txt_files):
 
     strf=strf.replace("\n ","\n")
 
-    file = open("KITTI/"+fnames, "w")
+    file = open("KITTI_"+input_path+"/"+fnames, "w")
     file.write(strf)
     file.close()
