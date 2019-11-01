@@ -50,7 +50,7 @@ for fnames in tqdm(txt_files):
             # print(lines[1+dd])
 
 
-        n_line= [0] * 16
+        n_line= [0] * 15
         n_line[0]=lines[0]
         n_line[4]=int(lines[1]-lines[3]/2)
         n_line[5]=int(lines[2]-lines[4]/2)
