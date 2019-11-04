@@ -74,9 +74,15 @@ for fnames in tqdm(txt_files):
                 if n>256:
                     n_line[c]=255
 
+        for cc2,char in enumerate(n_line):
+            if cc2==1:
+                n_line[cc2]=float(0)
+            if cc2>7:
+                n_line[cc2]=1
 
 
-        str1 = ' '.join(str(n_line)).replace(' ', '').replace(',', ' ').replace('[', '').replace("]","")
+
+        str1 = ' '.join(str(n_line)).replace(' ', '').replace(',', ' ').replace('[', '').replace("]","").replace("'","").replace('"',"")
         # print(str1)
         data[cc]=str1+"\n"
 
