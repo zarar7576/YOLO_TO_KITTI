@@ -1,3 +1,6 @@
+#This is just a utility to delete all the text files in a folder
+#Usage python3 delete_TXT_file.py coco/images
+
 import argparse
 import os
 from tqdm import tqdm
