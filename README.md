@@ -42,5 +42,3 @@ This creates a `KITTI_labels/` folder with converted annotation files.
 - Ensure your images are 256x256 (or update `image_width` / `image_height` in `main.py`).
 - The script currently maps class `1` to `other` and all other classes to `car`.
 
-## License
-Specify a license here if you intend to distribute this project.
